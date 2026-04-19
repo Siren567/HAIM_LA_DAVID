@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/useCart'
+import { setCheckoutIntent } from '../utils/donationPopupStorage'
 import { PageHeader } from '../components/layout/PageHeader'
 import { Container } from '../components/ui/Container'
 import { ButtonLink } from '../components/ui/ButtonLink'
+import { ImagePlaceholder } from '../components/ui/ImagePlaceholder'
 import styles from './CartPage.module.css'
 
 export function CartPage() {
-  const { items, subtotal, setQuantity, removeItem } = useCart()
+  const { items, subtotal, setQuantity, removeItem, itemCount } = useCart()
 
   return (
     <>
       <PageHeader
         eyebrow="עגלה"
         title="עגלת קניות"
-        lead="סיכום רכישה — ממשק נקי, מוכן לחיבור תשלום בהמשך."
+        lead="עדכנו כמויות, בדקו סיכום, והמשיכו לתשלום — הזמנת הדגמה ללא חיוב אמיתי."
       />
       <section className="page-section page-section--cream">
         <Container narrow>
@@ -30,7 +32,11 @@ export function CartPage() {
                 {items.map(({ product, quantity }) => (
                   <li key={product.id} className={styles.row}>
                     <Link to={`/shop/${product.id}`} className={styles.thumbLink}>
-                      <img src={product.image} alt="" className={styles.thumb} />
+                      {product.image ? (
+                        <img src={product.image} alt={product.nameHe} className={styles.thumb} />
+                      ) : (
+                        <ImagePlaceholder compact label="מוצר" className={styles.thumbPlaceholder} />
+                      )}
                     </Link>
                     <div className={styles.info}>
                       <Link to={`/shop/${product.id}`} className={styles.name}>
@@ -65,13 +71,25 @@ export function CartPage() {
                   </li>
                 ))}
               </ul>
-              <aside className={styles.summary}>
+              <aside className={styles.summary} aria-labelledby="cart-summary-title">
+                <h2 id="cart-summary-title" className={styles.summaryTitle}>
+                  סיכום הזמנה
+                </h2>
+                <p className={styles.summaryMeta}>
+                  {itemCount === 1 ? 'פריט אחד בעגלה' : `${itemCount} פריטים בעגלה`}
+                </p>
                 <p className={styles.sumRow}>
                   <span>סה״כ לפני משלוח</span>
                   <span>₪{subtotal.toLocaleString('he-IL')}</span>
                 </p>
                 <p className={styles.sumHint}>משלוח יחושב בשלב הבא (דמה).</p>
-                <ButtonLink to="/checkout" variant="primary" className={styles.checkout}>
+                <ButtonLink
+                  to="/checkout"
+                  state={{ from: 'shop' }}
+                  onClick={() => setCheckoutIntent('shop')}
+                  variant="primary"
+                  className={styles.checkout}
+                >
                   המשך לתשלום
                 </ButtonLink>
                 <Link to="/shop" className={styles.linkShop}>

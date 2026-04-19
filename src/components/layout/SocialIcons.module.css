@@ -1,0 +1,91 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem 0.5rem;
+  direction: rtl;
+}
+
+.item {
+  margin: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  color: rgba(248, 245, 239, 0.5);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 162, 39, 0.08);
+  transition:
+    color 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.link:hover {
+  color: rgba(212, 176, 74, 0.98);
+  background: rgba(201, 162, 39, 0.08);
+  border-color: rgba(201, 162, 39, 0.22);
+  box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.12), 0 4px 18px rgba(201, 162, 39, 0.18);
+  transform: scale(1.06);
+}
+
+.link:focus-visible {
+  outline: 2px solid rgba(201, 162, 39, 0.5);
+  outline-offset: 2px;
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 480px) {
+  .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+/* דף בהיר — ניגודיות כהה */
+.listLight .link {
+  color: rgba(15, 39, 71, 0.55);
+  background: rgba(15, 39, 71, 0.04);
+  border-color: rgba(15, 39, 71, 0.1);
+}
+
+.listLight .link:hover {
+  color: #0f2747;
+  background: rgba(201, 162, 39, 0.1);
+  border-color: rgba(201, 162, 39, 0.35);
+  box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.15), 0 6px 20px rgba(15, 39, 71, 0.08);
+}
+
+.listLight .link:focus-visible {
+  outline-color: rgba(15, 39, 71, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition:
+      color 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .link:hover {
+    transform: none;
+  }
+}

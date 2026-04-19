@@ -1,0 +1,187 @@
+.section {
+  /* Space after hero (stats removed): comfortable breathing room + room for card hover lift */
+  padding: clamp(3.25rem, 7vw, 4.75rem) 0 clamp(2.75rem, 5.5vw, 3.75rem);
+  background: linear-gradient(180deg, #f8f6f2 0%, #faf9f6 42%, #ffffff 100%);
+  position: relative;
+}
+
+.layout {
+  max-width: min(52rem, 100%);
+  margin-inline: auto;
+  padding: 0.35rem 0 0.5rem;
+}
+
+.card {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 14px 44px rgba(10, 22, 40, 0.07),
+    0 3px 12px rgba(10, 22, 40, 0.04);
+  overflow: hidden;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 22px 52px rgba(10, 22, 40, 0.1),
+    0 8px 20px rgba(10, 22, 40, 0.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .quoteMark {
+    filter: none;
+  }
+}
+
+.topAccent {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 162, 39, 0.28) 18%,
+    rgba(212, 176, 74, 0.88) 50%,
+    rgba(201, 162, 39, 0.28) 82%,
+    transparent 100%
+  );
+}
+
+.parchment {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 58% at 50% 0%, rgba(201, 162, 39, 0.045) 0%, transparent 55%);
+  opacity: 0.95;
+}
+
+.pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.032;
+  background-image: repeating-linear-gradient(
+    -14deg,
+    transparent,
+    transparent 36px,
+    rgba(18, 35, 56, 0.1) 36px,
+    rgba(18, 35, 56, 0.1) 37px
+  );
+  pointer-events: none;
+}
+
+/* Decorative gershayim — warm gold ornaments, behind content */
+.quoteMark {
+  position: absolute;
+  z-index: 0;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 12vw, 8rem);
+  line-height: 0.62;
+  font-weight: 400;
+  user-select: none;
+  pointer-events: none;
+  color: rgba(198, 162, 72, 0.42);
+  text-shadow:
+    0 0 40px rgba(212, 184, 120, 0.35),
+    0 2px 0 rgba(255, 252, 245, 0.25);
+  filter: blur(0.4px);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Upper corner (RTL start = physical top-right): opens the frame */
+.quoteMarkTop {
+  top: clamp(1.5rem, 3.5vw, 2.5rem);
+  inset-inline-start: clamp(1.1rem, 3.25vw, 2.35rem);
+}
+
+/* Lower opposite corner (RTL end = physical bottom-left): closes the frame */
+.quoteMarkBottom {
+  bottom: clamp(1.5rem, 3.5vw, 2.5rem);
+  inset-inline-end: clamp(1.1rem, 3.25vw, 2.35rem);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(2.75rem, 5.5vw, 3.85rem) clamp(2rem, 4.5vw, 3.5rem);
+  border-inline-start: 2px solid rgba(201, 162, 39, 0.42);
+}
+
+.headerBlock {
+  text-align: center;
+  margin-bottom: clamp(2rem, 3.5vw, 2.65rem);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.4vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.028em;
+  color: var(--color-navy-deep);
+}
+
+.titleOrnament {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  color: rgba(201, 162, 39, 0.52);
+}
+
+.titleOrnamentSvg {
+  width: min(10rem, 58vw);
+  height: auto;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.65rem, 2.8vw, 2.15rem);
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.paragraph {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 2;
+  color: var(--color-text);
+  text-align: right;
+  font-weight: 400;
+}
+
+@media (max-width: 520px) {
+  .quoteMark {
+    font-size: clamp(3.75rem, 18vw, 5.5rem);
+    filter: blur(0.25px);
+  }
+
+  .quoteMarkTop {
+    top: 1.15rem;
+    inset-inline-start: 0.85rem;
+  }
+
+  .quoteMarkBottom {
+    bottom: 1.15rem;
+    inset-inline-end: 0.85rem;
+  }
+
+  .paragraph {
+    font-size: 1.0625rem;
+    line-height: 1.95;
+  }
+}

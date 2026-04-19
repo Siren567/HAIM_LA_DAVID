@@ -1,16 +1,15 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { useCart } from '../context/useCart'
 import { categoryLabels, getProductById } from '../data/products'
+import { AddToCartButton } from '../components/shop/AddToCartButton'
+import { setCheckoutIntent } from '../utils/donationPopupStorage'
 import { Container } from '../components/ui/Container'
-import { Button } from '../components/ui/Button'
 import { ButtonLink } from '../components/ui/ButtonLink'
+import { ImagePlaceholder } from '../components/ui/ImagePlaceholder'
 import styles from './ProductDetailPage.module.css'
 
 export function ProductDetailPage() {
   const { id } = useParams()
   const product = id ? getProductById(id) : undefined
-  const { addItem } = useCart()
-
   if (!product) {
     return <Navigate to="/shop" replace />
   }
@@ -29,8 +28,14 @@ export function ProductDetailPage() {
           <div className={styles.grid}>
             <div className={styles.visual}>
               <div className={styles.imageFrame}>
-                <img src={product.image} alt="" className={styles.image} />
-                <div className={styles.imageEdge} aria-hidden />
+                {product.image ? (
+                  <>
+                    <img src={product.image} alt={product.nameHe} className={styles.image} />
+                    <div className={styles.imageEdge} aria-hidden />
+                  </>
+                ) : (
+                  <ImagePlaceholder label="תמונת מוצר בקרוב" className={styles.productPlaceholder} />
+                )}
               </div>
             </div>
             <div className={styles.detail}>
@@ -44,15 +49,19 @@ export function ProductDetailPage() {
                 ))}
               </ul>
               <div className={styles.actions}>
-                <Button variant="primary" type="button" onClick={() => addItem(product.id)}>
-                  הוספה לעגלה
-                </Button>
-                <ButtonLink to="/cart" variant="goldOutline">
-                  לעגלת הקניות
+                <AddToCartButton productId={product.id} variant="primary" className={styles.addBtn} />
+                <ButtonLink
+                  to="/checkout"
+                  state={{ from: 'shop' }}
+                  onClick={() => setCheckoutIntent('shop')}
+                  variant="goldOutline"
+                >
+                  לקופה
                 </ButtonLink>
               </div>
               <p className={styles.note}>
-                רכישה דרך האתר תתאפשר לאחר חיבור תשלומים — כרגע מדובר בתצוגה בלבד.
+                ניתן להוסיף לעגלה ולעבור ישר לקופה לביצוע הזמנת דמה — ללא חיוב אמיתי וללא שליחת נתוני
+                כרטיס לשרת.
               </p>
             </div>
           </div>

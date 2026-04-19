@@ -1,0 +1,136 @@
+/* כותרת בסגנון דף הפעילויות — ממורכז, זהב, קרם */
+.hero {
+  position: relative;
+  padding: clamp(2.75rem, 6vw, 4rem) 0 clamp(2rem, 4vw, 2.75rem);
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -30%, rgba(201, 162, 39, 0.06) 0%, transparent 55%),
+    linear-gradient(180deg, var(--color-cream) 0%, var(--color-ivory) 100%);
+  border-bottom: 1px solid rgba(18, 35, 56, 0.06);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  background-image: repeating-linear-gradient(
+    -12deg,
+    transparent,
+    transparent 14px,
+    rgba(18, 35, 56, 0.012) 14px,
+    rgba(18, 35, 56, 0.012) 14.5px
+  );
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 42rem;
+  margin-inline: auto;
+  direction: rtl;
+}
+
+.heroNav {
+  margin: 0 0 1.1rem;
+}
+
+.heroNavLink {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(18, 35, 56, 0.48);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.heroNavLink:hover {
+  color: var(--color-navy-deep);
+}
+
+.heroEyebrow {
+  margin: 0 0 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(18, 35, 56, 0.45);
+}
+
+.heroTitle {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.8vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: 0.02em;
+  color: var(--color-navy-deep);
+}
+
+.heroDivider {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.15rem;
+  color: rgba(201, 162, 39, 0.65);
+}
+
+.heroOrnament {
+  width: min(12rem, 70vw);
+  height: auto;
+}
+
+.heroLead {
+  margin: 0 auto;
+  max-width: 36rem;
+  font-size: clamp(0.98rem, 2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.contentSection {
+  padding: clamp(2.25rem, 5vw, 3rem) 0 clamp(3rem, 7vw, 4.5rem);
+  background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-bg-muted) 38%, var(--color-ivory) 100%);
+}
+
+.prose {
+  text-align: right;
+}
+
+.galleryTitle {
+  margin: clamp(2.25rem, 4vw, 2.75rem) 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.35rem);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.galleryIntro {
+  margin: 0 auto 1.35rem;
+  max-width: 28rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(18, 35, 56, 0.5);
+  text-align: center;
+}
+
+.galleryWrap {
+  margin-top: 0.25rem;
+}
+
+.actions {
+  margin-top: clamp(2.25rem, 4vw, 2.75rem);
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 480px) {
+  .heroNavLink {
+    font-size: 0.75rem;
+  }
+}

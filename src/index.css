@@ -113,6 +113,28 @@ button {
   font-weight: 400;
 }
 
+/* דף צור קשר — hero מרווח ומודגש יותר */
+.page-hero--contact {
+  padding: clamp(4.75rem, 11vw, 7.75rem) 0 clamp(3.25rem, 6.5vw, 4.5rem);
+}
+
+.page-hero--contact .page-hero__eyebrow {
+  margin-bottom: 1rem;
+}
+
+.page-hero--contact .page-hero__title {
+  margin-bottom: clamp(1rem, 2vw, 1.35rem);
+  font-size: clamp(2.15rem, 4.8vw, 3.15rem);
+  letter-spacing: 0.01em;
+}
+
+.page-hero--contact .page-hero__lead {
+  max-width: 34rem;
+  font-size: clamp(1.02rem, 1.9vw, 1.14rem);
+  line-height: 1.7;
+  color: rgba(248, 245, 239, 0.78);
+}
+
 .page-section {
   padding: clamp(3.5rem, 8vw, 5.5rem) 0;
 }

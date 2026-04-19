@@ -1,0 +1,38 @@
+.lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  line-height: 1.1;
+}
+
+.mark {
+  display: block;
+  line-height: 0;
+}
+
+.logoImg {
+  display: block;
+  height: clamp(2.85rem, 5vw, 3.5rem);
+  width: auto;
+  max-width: min(100%, 260px);
+  object-fit: contain;
+  object-position: right center;
+}
+
+.byline {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-navy-soft);
+  margin-top: 0.05rem;
+}
+
+.dark .logoImg {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+
+.dark .byline {
+  color: rgba(248, 245, 239, 0.72);
+}

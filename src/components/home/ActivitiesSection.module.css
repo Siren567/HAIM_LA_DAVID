@@ -1,0 +1,146 @@
+.section {
+  padding: clamp(3.5rem, 8vw, 5.75rem) 0 clamp(4rem, 9vw, 6.25rem);
+  background: linear-gradient(180deg, #faf9f6 0%, var(--color-ivory) 38%, var(--color-cream) 100%);
+  border-top: 1px solid rgba(18, 35, 56, 0.06);
+  scroll-margin-top: 5.5rem;
+}
+
+/* Slightly wider than default container for an editorial feel */
+.frame {
+  width: 100%;
+  max-width: min(1280px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  box-sizing: border-box;
+}
+
+.heading {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.intro {
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  max-width: 36rem;
+  text-align: center;
+  font-size: clamp(1rem, 1.85vw, 1.08rem);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+/* Editorial mosaic: 2×2 with intentional stagger on large screens */
+.mosaic {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4.5vw, 2.65rem);
+  /* ~12% narrower than before — cards feel lighter */
+  max-width: min(67rem, 100%);
+  margin-inline: auto;
+  align-items: start;
+}
+
+.mosaicItem {
+  display: flex;
+  min-height: 0;
+}
+
+.mosaicItem > * {
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2.4rem, 5.25vw, 4.25rem);
+    row-gap: clamp(2.85rem, 6vw, 4.65rem);
+  }
+}
+
+/* Stagger: dynamic rhythm without a rigid grid box (reset on single column) */
+@media (min-width: 900px) {
+  .mosaicItem[data-index='1'] {
+    margin-top: clamp(2rem, 4.2vw, 3.35rem);
+  }
+
+  .mosaicItem[data-index='2'] {
+    margin-top: clamp(-0.35rem, -0.8vw, -0.15rem);
+  }
+
+  .mosaicItem[data-index='3'] {
+    margin-top: clamp(1.35rem, 2.8vw, 2.5rem);
+  }
+}
+
+.ctaWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(3rem, 6.5vw, 4.75rem);
+  padding-top: 0.25rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.72rem 1.65rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #faf8f4;
+  text-decoration: none;
+  border-radius: 11px;
+  background: linear-gradient(180deg, #243244 0%, #1e2a38 100%);
+  border: 1px solid rgba(248, 245, 239, 0.1);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 6px 22px rgba(0, 0, 0, 0.22);
+  transition:
+    background 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.ctaLabel {
+  line-height: 1.2;
+}
+
+.ctaArrow {
+  display: inline-block;
+  font-size: 1em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.cta:hover {
+  background: linear-gradient(180deg, #1a2430 0%, #151d28 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 8px 28px rgba(0, 0, 0, 0.28);
+  transform: translateY(-1px);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateX(-4px);
+}
+
+.cta:focus-visible {
+  outline: 2px solid rgba(212, 176, 74, 0.85);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .cta {
+    width: 100%;
+    max-width: 20rem;
+    justify-content: center;
+  }
+}

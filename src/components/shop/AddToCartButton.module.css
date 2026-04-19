@@ -1,0 +1,47 @@
+.success {
+  border-color: rgba(46, 125, 50, 0.65) !important;
+  color: #1b4332 !important;
+  background: rgba(232, 245, 233, 0.98) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 2px 8px rgba(46, 125, 50, 0.12) !important;
+  animation: addPulse 0.45s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .success {
+    animation: none;
+  }
+}
+
+@keyframes addPulse {
+  0% {
+    transform: scale(0.97);
+  }
+  45% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.addedInner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  background: #2e7d32;
+  flex-shrink: 0;
+}

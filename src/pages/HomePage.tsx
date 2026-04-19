@@ -1,25 +1,15 @@
 import { Hero } from '../components/home/Hero'
-import { IntroSection } from '../components/home/IntroSection'
-import { ValuesSection } from '../components/home/ValuesSection'
-import { WhySection } from '../components/home/WhySection'
-import { StaffPreview } from '../components/home/StaffPreview'
-import { CampusSection } from '../components/home/CampusSection'
-import { FeaturedProducts } from '../components/home/FeaturedProducts'
-import { TestimonialsSection } from '../components/home/TestimonialsSection'
-import { ContactCta } from '../components/home/ContactCta'
+import { AboutInstitutionSection } from '../components/home/AboutInstitutionSection'
+import { ActivitiesSection } from '../components/home/ActivitiesSection'
+import { HomeGallery } from '../components/home/HomeGallery'
 
 export function HomePage() {
   return (
     <>
       <Hero />
-      <IntroSection />
-      <ValuesSection />
-      <WhySection />
-      <StaffPreview />
-      <CampusSection />
-      <FeaturedProducts />
-      <TestimonialsSection />
-      <ContactCta />
+      <AboutInstitutionSection />
+      <ActivitiesSection />
+      <HomeGallery />
     </>
   )
 }

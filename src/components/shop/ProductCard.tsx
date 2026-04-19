@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useCart } from '../../context/useCart'
 import type { Product } from '../../data/products'
-import { Button } from '../ui/Button'
+import { AddToCartButton } from './AddToCartButton'
+import { ImagePlaceholder } from '../ui/ImagePlaceholder'
 import styles from './ProductCard.module.css'
 
 type Props = {
@@ -9,14 +9,23 @@ type Props = {
 }
 
 export function ProductCard({ product }: Props) {
-  const { addItem } = useCart()
-
   return (
     <article className={styles.card}>
       <Link to={`/shop/${product.id}`} className={styles.imageLink}>
         <div className={styles.imageWrap}>
-          <img src={product.image} alt="" loading="lazy" className={styles.image} />
-          <div className={styles.imageOverlay} aria-hidden />
+          {product.image ? (
+            <>
+              <img
+                src={product.image}
+                alt={product.nameHe}
+                loading="lazy"
+                className={styles.image}
+              />
+              <div className={styles.imageOverlay} aria-hidden />
+            </>
+          ) : (
+            <ImagePlaceholder label="תמונת מוצר בקרוב" className={styles.productPlaceholder} />
+          )}
         </div>
       </Link>
       <div className={styles.body}>
@@ -26,13 +35,7 @@ export function ProductCard({ product }: Props) {
         <p className={styles.desc}>{product.description}</p>
         <div className={styles.meta}>
           <span className={styles.price}>₪{product.price.toLocaleString('he-IL')}</span>
-          <Button
-            variant="goldOutline"
-            className={styles.btn}
-            onClick={() => addItem(product.id)}
-          >
-            הוספה לעגלה
-          </Button>
+          <AddToCartButton productId={product.id} variant="goldOutline" className={styles.btn} />
         </div>
       </div>
     </article>

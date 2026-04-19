@@ -1,0 +1,229 @@
+.hero {
+  position: relative;
+  padding: clamp(3rem, 7vw, 4.5rem) 0 clamp(2.5rem, 5vw, 3.25rem);
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -30%, rgba(201, 162, 39, 0.06) 0%, transparent 55%),
+    linear-gradient(180deg, var(--color-cream) 0%, var(--color-ivory) 100%);
+  border-bottom: 1px solid rgba(18, 35, 56, 0.06);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  background-image: repeating-linear-gradient(
+    -12deg,
+    transparent,
+    transparent 14px,
+    rgba(18, 35, 56, 0.012) 14px,
+    rgba(18, 35, 56, 0.012) 14.5px
+  );
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 38rem;
+  margin-inline: auto;
+}
+
+.heroEyebrow {
+  margin: 0 0 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(18, 35, 56, 0.45);
+}
+
+.heroTitle {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--color-navy-deep);
+}
+
+.heroDivider {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.15rem;
+  color: rgba(201, 162, 39, 0.65);
+}
+
+.heroOrnament {
+  width: min(12rem, 70vw);
+  height: auto;
+}
+
+.heroLead {
+  margin: 0 auto;
+  max-width: 30rem;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.introSection {
+  padding: clamp(2.25rem, 5vw, 3rem) 0 clamp(1.5rem, 4vw, 2rem);
+  background: var(--color-ivory);
+  border-bottom: 1px solid rgba(18, 35, 56, 0.05);
+}
+
+.introProse {
+  text-align: right;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.introProse p {
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  line-height: 1.78;
+  color: var(--color-text);
+}
+
+.introProse p:last-child {
+  margin-bottom: 0;
+}
+
+.featureSection {
+  padding: clamp(2.75rem, 6vw, 4rem) 0;
+  background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-bg-muted) 45%, var(--color-ivory) 100%);
+}
+
+.featureSectionAlt {
+  background: linear-gradient(180deg, var(--color-bg-white) 0%, var(--color-ivory) 50%, var(--color-bg-white) 100%);
+}
+
+.featureRow {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  align-items: center;
+  direction: rtl;
+}
+
+@media (min-width: 900px) {
+  .featureRow {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .featureRowNormal {
+    grid-template-areas: 'text image';
+  }
+
+  .featureRowFlip {
+    grid-template-areas: 'text image';
+  }
+
+  .featureRowFlip .featureText {
+    grid-column: 2;
+  }
+
+  .featureRowFlip .featureImageWrap {
+    grid-column: 1;
+  }
+}
+
+.featureText {
+  grid-area: text;
+  text-align: right;
+  min-width: 0;
+}
+
+.featureTitle {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.8vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--color-navy-deep);
+}
+
+.featureLead {
+  margin: 0 0 1.35rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+.block + .block {
+  margin-top: 1.35rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid rgba(18, 35, 56, 0.07);
+}
+
+.blockTitle {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-navy-deep);
+  letter-spacing: 0.01em;
+}
+
+.blockBody {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.72;
+  color: var(--color-text);
+}
+
+.featureImageWrap {
+  grid-area: image;
+  min-width: 0;
+}
+
+.featureImageFrame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-muted);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.75) inset,
+    0 12px 40px rgba(10, 22, 40, 0.08);
+  border: 1px solid rgba(18, 35, 56, 0.07);
+}
+
+.featureImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+}
+
+.featureImageEdge {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+@media (max-width: 899px) {
+  .featureRowFlip .featureText,
+  .featureRowFlip .featureImageWrap {
+    grid-column: auto;
+  }
+
+  .featureRow {
+    grid-template-areas:
+      'image'
+      'text';
+  }
+
+  .featureImage {
+    aspect-ratio: 16 / 11;
+  }
+}
