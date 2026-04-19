@@ -1,0 +1,35 @@
+:root {
+  /* Brand */
+  --color-navy-deep: #0a1628;
+  --color-navy: #122338;
+  --color-navy-soft: #1c314d;
+
+  --color-gold: #c9a227;
+  --color-gold-soft: #d4b04a;
+  --color-gold-muted: rgba(201, 162, 39, 0.35);
+
+  --color-cream: #f8f5ef;
+  --color-ivory: #faf8f4;
+  --color-bg-white: #ffffff;
+  --color-bg-muted: #f3efe8;
+
+  --color-text: #2a2f36;
+  --color-text-muted: #5c6470;
+  --color-border: rgba(18, 35, 56, 0.1);
+
+  /* Effects */
+  --shadow-sm: 0 2px 8px rgba(10, 22, 40, 0.06);
+  --shadow-md: 0 12px 40px rgba(10, 22, 40, 0.1);
+  --shadow-lg: 0 24px 64px rgba(10, 22, 40, 0.14);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --container-max: 1180px;
+  --container-pad: clamp(1.25rem, 4vw, 2rem);
+
+  --font-display: 'Frank Ruhl Libre', 'Times New Roman', serif;
+  --font-body: 'Heebo', system-ui, sans-serif;
+
+  --transition: 0.22s ease;
+}

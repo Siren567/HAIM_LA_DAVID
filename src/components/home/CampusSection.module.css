@@ -1,0 +1,51 @@
+.section {
+  padding: clamp(3.5rem, 8vw, 5.5rem) 0;
+  background: var(--color-bg-white);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 820px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.figure {
+  margin: 0;
+}
+
+.imageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.figure:hover .image {
+  transform: scale(1.03);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(10, 22, 40, 0.55) 100%);
+}
+
+.caption {
+  margin-top: 0.85rem;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
